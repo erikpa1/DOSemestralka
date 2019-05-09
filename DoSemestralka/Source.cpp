@@ -43,22 +43,22 @@ int main()
 				tmpItem->SetVaha(valA);
 				tmpItem->SetCena(valC);
 
-				batoh.AddItem(tmpItem);
-
-				cout << "Loaded " << tmpItem->ToString() << endl;
+				batoh.AddItem(tmpItem);			
 
 				tmp++;
 			}
 
 			if (tmp == 300)
 			{
-				return;
+				break;
 			}
 		}
 
 		cout << "Size: " << tmp;
+		cout << "Batoh actual capacity " << batoh.GetActualCapacity();
+		cout << "Batoh maximal capacity " << batoh.GetMaxCapacity();
 
-		while (batoh.GetActualCapacity() < 0)
+		while (batoh.GetActualCapacity() > batoh.GetMaxCapacity())
 		{
 			batoh.RemoveTheHardestItem();
 		}

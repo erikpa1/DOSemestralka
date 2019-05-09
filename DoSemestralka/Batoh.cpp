@@ -5,6 +5,7 @@
 #include "BatohItem.h"
 
 
+using namespace std;
 
 Batoh::Batoh()
 {
@@ -22,6 +23,11 @@ void Batoh::AddItem(BatohItem * item)
 		_actualCapacity = item->GetVaha();
 		_hodnotaBatohu = item->GetCena();
 		_items.push_back(item);
+
+		std::cout << "Loaded " << item->ToString() << endl;
+	} else
+	{
+		cout << "Tried to insert invalid nullptr" << endl;
 	}
 	
 }
@@ -42,9 +48,14 @@ void Batoh::RemoveTheHardestItem()
 				theHardest = tmp;
 				theHardestIndex = tmpIndex;
 			}
-
 			tmpIndex++;
 		}
+		if (theHardest != nullptr)
+		{
+			std::cout << "Removing from bag" << theHardest->ToString() << std::endl;
+			_items.erase(_items.begin() + tmpIndex);
+		}
+
 	}
 
 }
