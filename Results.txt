@@ -1,2 +1,3 @@
-Vaha batoha na konci alg: 1486
-Hodnota batoha na konci alg: 5136
+Vaha batoha na konci alg: 1487
+Hodnota batoha na konci alg: 5996
+Pocet predmetov: 93

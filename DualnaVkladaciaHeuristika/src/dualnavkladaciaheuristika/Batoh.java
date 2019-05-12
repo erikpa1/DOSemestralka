@@ -96,6 +96,10 @@ public class Batoh {
         return _maxCapacity - _actualCapacity;
     }
         
+    public int GetPocetItemov()
+    {
+        return _items.size();
+    }
     
     
     

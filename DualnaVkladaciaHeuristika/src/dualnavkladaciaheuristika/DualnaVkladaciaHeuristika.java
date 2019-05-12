@@ -24,26 +24,25 @@ public class DualnaVkladaciaHeuristika {
 
         batoh.SetMaximalCapacity(1500);
 
-        int tmp = 0;
-
-        try {
+        int tmpIndex = 0;
+        
+        try 
+        {
             File aValues = new File("../H3_a.txt");
             File cValues = new File("../H3_c.txt");
 
             Scanner aVSc = new Scanner(aValues);
             Scanner cVSc = new Scanner(cValues);
 
-            while (aVSc.hasNextLine()) {
-                BatohItem tmpItem = new BatohItem();
+            while (aVSc.hasNextInt()) 
+            {
+                
+                BatohItem tmpItem = new BatohItem();                
                 tmpItem.SetVaha(aVSc.nextInt());
                 tmpItem.SetCena(cVSc.nextInt());
 
-                batoh.AddItem(tmpItem);
+                batoh.AddItem(tmpItem);                
                 
-                tmp++;
-                if (tmp == 300) {
-                    break;
-                }
             }
             
             System.out.println("Size:");
@@ -51,7 +50,12 @@ public class DualnaVkladaciaHeuristika {
             System.out.println("Batoh maximal capacity: " + batoh.GetMaxCapacity());
             System.out.println("Batoh hodnota: " + batoh.GetHodnotaBatohu());
             
-            while (batoh.GetActualCapacity() > batoh.GetMaxCapacity())
+            while (batoh.GetPocetItemov() > 300)
+            {
+                batoh.RemoveTheHardestItem();
+            }
+            
+            while (batoh.GetActualCapacity() > batoh.GetMaxCapacity() )
             {
                 batoh.RemoveTheHardestItem();
             }  
@@ -59,10 +63,12 @@ public class DualnaVkladaciaHeuristika {
             PrintWriter writer = new PrintWriter("../Results.txt");
             writer.println("Vaha batoha na konci alg: " + batoh.GetActualCapacity());
             writer.println("Hodnota batoha na konci alg: " + batoh.GetHodnotaBatohu());
+            writer.println("Pocet predmetov: " + batoh.GetPocetItemov());
             writer.close();
             
             
-        } catch (Exception e) {
+        } catch (Exception e) 
+        {
             e.printStackTrace();
         }
 
